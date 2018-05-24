@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ChartJS</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport">
+<!-- Bootstrap 3.3.6 -->
+<!-- 引入css，注意这里的文件路径跟demo里不同！！！！！！！！！！！！！因为文件夹结构变了  -->
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="wrapper" style="width: 95%">
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					<small></small>
+				</h1>
+			</section>
+			<!-- Main content -->
+			<section class="content">
+				<div class="row">
+					<!-- 这是第1个chart。下面的class是css的name，这些css定义是bootstrap自带的，而用法都是从demo页面复制的，所以你不知道是正常的，你就这么跟教授讲就行，就是copy的demo里的代码。  -->-
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">iPhone</h3>
+							</div>
+							<div class="box-body">
+								<!-- 这个id是下面js初始化chart时要用到的，作为函数调用的参数，这样就能把图形初始化在这里，所以每个id是唯一的。这个名字是自己定的 -->
+								<canvas id="iPhone_pie" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- 这是第2个chart，以下类推 -->
+					<div class="col-md-6">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">iPhone</h3>
+							</div>
+							<div class="box-body">
+								<div class="chart">
+									<canvas id="iPhone_line" style="height: 250px"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">Samsung</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="Samsung_pie" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- LINE CHART -->
+					<div class="col-md-6">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">Samsung</h3>
+							</div>
+							<div class="box-body">
+								<div class="chart">
+									<canvas id="Samsung_line" style="height: 250px"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">Motorola</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="Motorola_pie" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- LINE CHART -->
+					<div class="col-md-6">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">Motorola</h3>
+							</div>
+							<div class="box-body">
+								<div class="chart">
+									<canvas id="Motorola_line" style="height: 250px"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">Sony</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="Sony_pie" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- LINE CHART -->
+					<div class="col-md-6">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">Sony</h3>
+							</div>
+							<div class="box-body">
+								<div class="chart">
+									<canvas id="Sony_line" style="height: 250px"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">OnePlus</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="OnePlus_pie" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- LINE CHART -->
+					<div class="col-md-6">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">OnePlus</h3>
+							</div>
+							<div class="box-body">
+								<div class="chart">
+									<canvas id="OnePlus_line" style="height: 250px"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">HTC</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="HTC_pie" style="height: 200px"></canvas>
+							</div>
+						</div>
+					</div>
+					<!-- LINE CHART -->
+					<div class="col-md-6">
+						<div class="box box-info">
+							<div class="box-header with-border">
+								<h3 class="box-title">HTC</h3>
+							</div>
+							<div class="box-body">
+								<div class="chart">
+									<canvas id="HTC_line" style="height: 250px"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.1</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_1" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.2</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_2" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.3</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_3" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.4</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_4" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.5</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_5" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.6</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_6" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.7</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_7" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.8</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_8" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.9</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_9" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box box-danger">
+							<div class="box-header with-border">
+								<h3 class="box-title">ALL_2016.10.10</h3>
+							</div>
+							<div class="box-body">
+								<canvas id="all_bar_10" style="height: 250px"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- 引入js，注意这里的文件路径跟demo里不同！！！！！！！！！！！！！因为文件夹结构变了  -->
+	<!--jQuery2.2.3-->
+	<script src="./plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<!--Bootstrap3.3.6-->
+	<script src="./bootstrap/js/bootstrap.min.js"></script>
+	<!--ChartJS1.1.1-->
+	<script src="./plugins/chartjs/Chart.min.js"></script>
+	<!--pagescript-->
+	<script>
+		$(function() {
+			//借鉴自demo
+			var lineChartData = new Array();
+			var lineChartOptions = {
+				//Boolean-Ifweshouldshowthescaleatall
+				showScale : true,
+				//Boolean-Whethergridlinesareshownacrossthechart
+				scaleShowGridLines : false,
+				//String-Colourofthegridlines
+				scaleGridLineColor : "rgba(0,0,0,.05)",
+				//Number-Widthofthegridlines
+				scaleGridLineWidth : 1,
+				//Boolean-Whethertoshowhorizontallines(exceptXaxis)
+				scaleShowHorizontalLines : true,
+				//Boolean-Whethertoshowverticallines(exceptYaxis)
+				scaleShowVerticalLines : true,
+				//Boolean-Whetherthelineiscurvedbetweenpoints
+				bezierCurve : true,
+				//Number-Tensionofthebeziercurvebetweenpoints
+				bezierCurveTension : 0.3,
+				//Boolean-Whethertoshowadotforeachpoint
+				pointDot : false,
+				//Number-Radiusofeachpointdotinpixels
+				pointDotRadius : 4,
+				//Number-Pixelwidthofpointdotstroke
+				pointDotStrokeWidth : 1,
+				//Number-amountextratoaddtotheradiustocaterforhitdetectionoutsidethedrawnpoint
+				pointHitDetectionRadius : 20,
+				//Boolean-Whethertoshowastrokefordatasets
+				datasetStroke : true,
+				//Number-Pixelwidthofdatasetstroke
+				datasetStrokeWidth : 2,
+				//Boolean-Whethertofillthedatasetwithacolor
+				datasetFill : true,
+				//Boolean-whethertomaintainthestartingaspectratioornotwhenresponsive,ifsettofalse,willtakeupentirecontainer
+				maintainAspectRatio : true,
+				//Boolean-whethertomakethechartresponsivetowindowresizing
+				responsive : true
+			};
+			//借鉴自demo
+			var pieChartData = new Array();
+			var pieOptions = {
+				//Boolean-Whetherweshouldshowastrokeoneachsegment
+				segmentShowStroke : true,
+				//String-Thecolourofeachsegmentstroke
+				segmentStrokeColor : "#fff",
+				//Number-Thewidthofeachsegmentstroke
+				segmentStrokeWidth : 2,
+				//Number-Thepercentageofthechartthatwecutoutofthemiddle
+				percentageInnerCutout : 50,//Thisis0forPiecharts
+				//Number-Amountofanimationsteps
+				animationSteps : 100,
+				//String-Animationeasingeffect
+				animationEasing : "easeOutBounce",
+				//Boolean-WhetherweanimatetherotationoftheDoughnut
+				animateRotate : true,
+				//Boolean-WhetherweanimatescalingtheDoughnutfromthecentre
+				animateScale : false,
+				//Boolean-whethertomakethechartresponsivetowindowresizing
+				responsive : true,
+				//Boolean-whethertomaintainthestartingaspectratioornotwhenresponsive,ifsettofalse,willtakeupentirecontainer
+				maintainAspectRatio : true
+			};
+
+			//-------------
+			//- BAR CHART -
+			//-------------
+			//借鉴自demo
+			var barChartData = new Array();
+			var barChartOptions = {
+				//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+				scaleBeginAtZero : true,
+				//Boolean - Whether grid lines are shown across the chart
+				scaleShowGridLines : true,
+				//String - Colour of the grid lines
+				scaleGridLineColor : "rgba(0,0,0,.05)",
+				//Number - Width of the grid lines
+				scaleGridLineWidth : 1,
+				//Boolean - Whether to show horizontal lines (except X axis)
+				scaleShowHorizontalLines : true,
+				//Boolean - Whether to show vertical lines (except Y axis)
+				scaleShowVerticalLines : true,
+				//Boolean - If there is a stroke on each bar
+				barShowStroke : true,
+				//Number - Pixel width of the bar stroke
+				barStrokeWidth : 2,
+				//Number - Spacing between each of the X value sets
+				barValueSpacing : 5,
+				//Number - Spacing between data sets within X values
+				barDatasetSpacing : 1,
+				//Boolean - whether to make the chart responsive
+				responsive : true,
+				maintainAspectRatio : true
+			};
+			
+			//这里是定义4个二维数组，分别对应了bar的四个柱的值，数组的第1维是日期，第2维是品牌
+			//因为没有在java里重新生成json，所以bar的数据不能直接从json得到
+			//line图的数据已经包含了各品牌的每天的数据，所以可以从line数据中总结出bar的数据
+			var bar_total = [];
+			var bar_positive = [];
+			var bar_neutral = [];
+			var bar_negative = [];
+			
+			for(var i=0; i<10; i++){
+				bar_total.push([]);
+				bar_positive.push([]);
+				bar_neutral.push([]);
+				bar_negative.push([]);
+			}
+
+			//读取json文件
+			$.getJSON("./json/statistic.json", function(json) {
+				//注意，这个是个循环，循环json里的item列表，i是索引，item就是每个json数据的js对象
+				$.each(json, function(i, item) {					
+					
+					//这段就是得出bar数据的代码，因为有10天数据所以循环10次，iphone在所有"柱组"的第一组，所以存在第二维的0位置
+					//往下都是得到各品牌的bar数据。也就是说，每循环读到一个json，就会有1/6的数组数据初始化完成（因为有六个品牌）
+					if (item.smartphone == "iPhone") {
+						for (var ii = 0; ii < 10; ii++) {
+							bar_total[ii][0] = item.line.positive[ii]
+									+ item.line.neutral[ii]
+									+ item.line.negative[ii];
+							bar_positive[ii][0] = item.line.positive[ii];
+							bar_neutral[ii][0] = item.line.neutral[ii];
+							bar_negative[ii][0] = item.line.negative[ii];
+						}
+
+					} else if (item.smartphone == "Samsung") {
+						for (var ii = 0; ii < 10; ii++) {
+							bar_total[ii][1] = item.line.positive[ii]
+									+ item.line.neutral[ii]
+									+ item.line.negative[ii];
+							bar_positive[ii][1] = item.line.positive[ii];
+							bar_neutral[ii][1] = item.line.neutral[ii];
+							bar_negative[ii][1] = item.line.negative[ii];
+						}
+
+					} else if (item.smartphone == "Motorola") {
+						for (var ii = 0; ii < 10; ii++) {
+							bar_total[ii][2] = item.line.positive[ii]
+									+ item.line.neutral[ii]
+									+ item.line.negative[ii];
+							bar_positive[ii][2] = item.line.positive[ii];
+							bar_neutral[ii][2] = item.line.neutral[ii];
+							bar_negative[ii][2] = item.line.negative[ii];
+						}
+					} else if (item.smartphone == "Sony") {
+						for (var ii = 0; ii < 10; ii++) {
+							bar_total[ii][3] = item.line.positive[ii]
+									+ item.line.neutral[ii]
+									+ item.line.negative[ii];
+							bar_positive[ii][3] = item.line.positive[ii];
+							bar_neutral[ii][3] = item.line.neutral[ii];
+							bar_negative[ii][3] = item.line.negative[ii];
+						}
+					} else if (item.smartphone == "OnePlus") {
+						for (var ii = 0; ii < 10; ii++) {
+							bar_total[ii][4] = item.line.positive[ii]
+									+ item.line.neutral[ii]
+									+ item.line.negative[ii];
+							bar_positive[ii][4] = item.line.positive[ii];
+							bar_neutral[ii][4] = item.line.neutral[ii];
+							bar_negative[ii][4] = item.line.negative[ii];
+						}
+					} else {
+						for (var ii = 0; ii < 10; ii++) {
+							bar_total[ii][5] = item.line.positive[ii]
+									+ item.line.neutral[ii]
+									+ item.line.negative[ii];
+							bar_positive[ii][5] = item.line.positive[ii];
+							bar_neutral[ii][5] = item.line.neutral[ii];
+							bar_negative[ii][5] = item.line.negative[ii];
+						}
+					}
+
+					//从这开始是line图的数据定义，这些数据是从json中直接得到的
+					//-------------
+					//-LINECHART-
+					//--------------
+					lineChartData[i] = {
+						labels : item.line.labels,
+						datasets : [ {
+							label : "Positive",
+							fillColor : "green",
+							strokeColor : "green",
+							pointColor : "green",
+							data : item.line.positive
+						}, {
+							label : "Neutral",
+							fillColor : "gray",
+							strokeColor : "gray",
+							pointColor : "gray",
+							data : item.line.neutral
+						}, {
+							label : "Negative",
+							fillColor : "red",
+							strokeColor : "red",
+							pointColor : "red",
+							data : item.line.negative
+						} ]
+					};
+					//这里是跟demo差不多的，只是变量名的变化。$(#xxx)是jquery里取页面元素的一个方法，xxx就是元素的id，这里我们用了json中的值，而这个值跟在上面定义的id是完全匹配的。
+					//jquery是javascript的一个开源的函数库，很多开源项目都基于jquery，bootstrap的js部分也是基于jquery的，这个你了解一下。
+					//然后再说一句，javascript和java一点关系都没有，完全没关系的两种语言，只是名字有点像。
+					var lineChartCanvas = $("#" + item.line.name).get(0)
+							.getContext("2d");
+					var lineChart = new Chart(lineChartCanvas);
+					lineChartOptions.datasetFill = false;
+					lineChart.Line(lineChartData[i], lineChartOptions);
+
+					//饼图，跟上面类似。
+					//-------------
+					//-PIECHART-
+					//-------------
+					var PieData = [ {
+						value : item.pie.positive,
+						color : "green",
+						highlight : "#f56954",
+						label : "positive"
+					}, {
+						value : item.pie.neutral,
+						color : "gray",
+						highlight : "#00a65a",
+						label : "neutral"
+					}, {
+						value : item.pie.negative,
+						color : "red",
+						highlight : "#f39c12",
+						label : "negative"
+					} ];
+					var pieChartCanvas = $("#" + item.pie.name).get(0)
+							.getContext("2d");
+					var pieChart = new Chart(pieChartCanvas);
+					pieChart.Doughnut(PieData, pieOptions);
+					
+					//这里开始是柱图了
+					//注意，柱图是只有当i等于5的时候才会执行初始化的代码
+					//为什么呢？因为6个品牌，索引从0开始，所以到5的时候，意味着所有数据都循环了一遍，这时数组的数据才完全初始化完成
+					//只有这时才能初始化出完整的柱图
+					if(i == 5){
+						for (var i = 0; i < 10; i++) {
+							var barChartData = {
+								labels : [ "iPhone", "Samsung", "Motorola", "Sony",
+										"OnePlus", "HTC" ],
+								datasets : [ {
+									label : "total",
+									//数据取自对应的数据
+									data : bar_total[i]
+								}, {
+									label : "positive",
+									//数据取自对应的数据
+									data : bar_positive[i]
+								}, {
+									label : "neutral",
+									//数据取自对应的数据
+									data : bar_neutral[i]
+								}, {
+									label : "negative",
+									//数据取自对应的数据
+									data : bar_negative[i]
+								} ]
+							};
+							//第1个柱子的颜色定义,total
+							barChartData.datasets[0].fillColor = "blue";
+							barChartData.datasets[0].strokeColor = "blue";
+							barChartData.datasets[0].pointColor = "blue";
+							//第2个柱子的颜色定义,positive
+							barChartData.datasets[1].fillColor = "green";
+							barChartData.datasets[1].strokeColor = "green";
+							barChartData.datasets[1].pointColor = "green";
+							//第3个柱子的颜色定义,neutral
+							barChartData.datasets[2].fillColor = "gray";
+							barChartData.datasets[2].strokeColor = "gray";
+							barChartData.datasets[2].pointColor = "gray";
+							//第4个柱子的颜色定义,negative
+							barChartData.datasets[3].fillColor = "red";
+							barChartData.datasets[3].strokeColor = "red";
+							barChartData.datasets[3].pointColor = "red";
+							//这里的id跟上面不太一样，我在上面定义的柱图的id都是固定前缀（all_bar_）加数字（从1开始）
+							var barChartCanvas = $("#all_bar_" + (i+1)).get(0).getContext("2d");
+							var barChart = new Chart(barChartCanvas);
+							barChartOptions.datasetFill = false;
+							barChart.Bar(barChartData, barChartOptions);
+						}
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
